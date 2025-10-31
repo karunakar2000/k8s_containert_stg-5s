@@ -1,8 +1,8 @@
 module "vpc" {
     source = "../terraform_vpc"
-    vpc_cidr = var.vpc_cidr
-    project_name = var.project_name
-    environment = var.environment
-    vpc_tags = var.vpc_tags
+    vpc_cidr = var.cidr_block
+    project_name = var.proj_name
+    environment = var.envi
+    vpc_tags = var.vpc_tag
 
 }
