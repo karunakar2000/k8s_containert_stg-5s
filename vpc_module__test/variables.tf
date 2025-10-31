@@ -12,7 +12,7 @@ variable "environment" {
 
 variable "vpc_tags" {
     default = {
-        Env = TEST-DEV
-        Super = Mahesh
+        Env = "TEST-DEV"
+        Super = "Mahesh"
     }
 }
