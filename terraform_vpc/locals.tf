@@ -1,5 +1,5 @@
 locals{
-    common_tags {
+    common_tags = {
         Project = var.project_name
         Environment = var.environment
         Terraform = true
