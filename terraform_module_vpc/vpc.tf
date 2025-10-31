@@ -4,6 +4,7 @@ resource "aws_vpc" "main" {
 
   tags = merge(
     local.common_tags,
+    var.vpc_tags,
     {
         Name = local.common_name_suffix
     }
