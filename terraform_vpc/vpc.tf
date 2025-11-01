@@ -137,3 +137,15 @@ resource "aws_nat_gateway" "natgw" {
   # on the Internet Gateway for the VPC.
   depends_on = [aws_internet_gateway.main]
 }
+
+resource "aws_route" "private" {
+  route_table_id            = aws_route_table.private.id
+  destination_cidr_block    = "0.0.0.0/0"
+  nat_gateway_id = aws_nat_gateway.natgw.id
+}
+
+resource "aws_route" "database" {
+  route_table_id            = aws_route_table.database.id
+  destination_cidr_block    = "0.0.0.0/0"
+  nat_gateway_id = aws_nat_gateway.natgw.id
+}
