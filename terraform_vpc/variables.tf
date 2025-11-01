@@ -31,3 +31,14 @@ variable "public_subnet_tags" {
     default = {}
 
 }
+
+variable "private_subnet_cidrs" {
+    type = list
+
+}
+
+variable "private_subnet_tags" {
+    type = map
+    default = {}
+
+}

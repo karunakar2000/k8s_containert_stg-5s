@@ -20,3 +20,9 @@ variable "vpc_tag" {
 variable "public_subnet_cidrs" {
     default = ["172.18.1.0/24", "172.18.2.0/24"]
 }
+
+variable "private_subnet_cidrs" {
+    type = list
+    default = ["172.18.5.0/24", "172.18.6.0/24"]
+
+}
