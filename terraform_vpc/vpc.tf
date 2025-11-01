@@ -24,13 +24,17 @@ resource "aws_internet_gateway" "main" {
   )
 }
 
-# resource "aws_subnet" "public" {
-#   count = length(var.public_subnet_cidrs)
-#   vpc_id     = aws_vpc.main.id
-#   cidr_block = var.public_subnet_cidrs[count.index] 
-#   availability_zone = 
+resource "aws_subnet" "public" {
+  count = length(var.public_subnet_cidrs)
+  vpc_id     = aws_vpc.main.id
+  cidr_block = var.public_subnet_cidrs[count.index] 
+  availability_zone = local.az_names[count.index]
 
-#   tags = {
-#     Name = "Main"
-#   }
-# }
+  tags = merge(
+    var.public_subnet_tags,
+    var.vpc_tags,
+    {
+      Name = "${local.common_name_suffix}-public-sub-${local.az_names[count.index]}"
+    }
+  )
+}
