@@ -20,3 +20,8 @@ variable "igw_tags" {
     type = map
     default = {}
 }
+
+# variable "public_subnet_cidrs" {
+#     type = list
+
+# }

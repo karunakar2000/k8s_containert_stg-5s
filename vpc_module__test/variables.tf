@@ -17,6 +17,6 @@ variable "vpc_tag" {
     }
 }
 
-variable "igw_tag" {
-    default = "IGW"
-}
+# variable "public_subnet_cidrs" {
+#     default = ["172.18.1.0/24", "172.18.2.0/24"]
+# }
