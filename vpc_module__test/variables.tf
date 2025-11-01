@@ -2,17 +2,17 @@ variable "cidr_block" {
     default = "172.18.0.0/16"
 }
 
-variable "proj_name" {
-    default = "terraform_proj"
+variable "project_name" {
+    default = "terraform-project"
 }
 
 variable "envi" {
-    default = "DEV"
+    default = "dev"
 }
 
 variable "vpc_tag" {
     default = {
-        Env = "TEST-DEV"
+        Env = "dev_env"
         Super = "Mahesh"
     }
 }
