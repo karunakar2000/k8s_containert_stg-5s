@@ -128,7 +128,7 @@ resource "aws_nat_gateway" "natgw" {
   subnet_id     = aws_subnet.public[0].id
 
   tags = merge(
-    var.nat_tags,
+    var.nat_gateway_tags,
     {
       Name = "${local.common_name_suffix}-nat"
     }
