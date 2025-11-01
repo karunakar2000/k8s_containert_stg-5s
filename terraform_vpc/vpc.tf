@@ -29,12 +29,28 @@ resource "aws_subnet" "public" {
   vpc_id     = aws_vpc.main.id
   cidr_block = var.public_subnet_cidrs[count.index] 
   availability_zone = local.az_names[count.index]
+  map_public_ip_on_launch = true
 
   tags = merge(
     var.public_subnet_tags,
     var.vpc_tags,
     {
-      Name = "${local.common_name_suffix}-public-sub-${local.az_names[count.index]}"
+      Name = "${local.common_name_suffix}-public-sub-${local.az_names[count.index]}" # project_name-dev-public-us-east-1a
+    }
+  )
+}
+
+resource "aws_subnet" "private" {
+  count = length(var.public_subnet_cidrs)
+  vpc_id     = aws_vpc.main.id
+  cidr_block = var.public_subnet_cidrs[count.index] 
+  availability_zone = local.az_names[count.index]
+
+  tags = merge(
+    var.public_subnet_tags,
+    var.vpc_tags,
+    {
+      Name = "${local.common_name_suffix}-public-sub-${local.az_names[count.index]}" # project_name-dev-public-us-east-1a
     }
   )
 }
