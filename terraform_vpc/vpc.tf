@@ -69,3 +69,39 @@ resource "aws_subnet" "database" {
     }
   )
 }
+
+resource "aws_route_table" "public" {
+  vpc_id = aws_vpc.main.id
+
+  tags = merge(
+    var.public_route_table_tags,
+    var.vpc_tags,
+    {
+      Name = "${local.common_name_suffix}-public-rt"
+    }
+  )
+}
+
+resource "aws_route_table" "private" {
+  vpc_id = aws_vpc.main.id
+
+  tags = merge(
+    var.private_route_table_tags,
+    var.vpc_tags,
+    {
+      Name = "${local.common_name_suffix}-private-rt"
+    }
+  )
+}
+
+resource "aws_route_table" "database" {
+  vpc_id = aws_vpc.main.id
+
+  tags = merge(
+    var.database_route_table_tags,
+    var.vpc_tags,
+    {
+      Name = "${local.common_name_suffix}-database-rt"
+    }
+  )
+}
