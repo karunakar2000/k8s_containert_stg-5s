@@ -112,7 +112,13 @@ resource "aws_route" "public" {
   gateway_id = aws_internet_gateway.main.id
 }
 
-resource "aws_eip" "nat" {
-  instance = aws_instance.web.id
+resource "aws_eip" "nat" { 
   domain   = "vpc"
+
+  tags = merge(
+    var.eip_tags,
+    {
+      Name = "${local.common_name_suffix}-eip-nat"
+    }
+  )
 }
