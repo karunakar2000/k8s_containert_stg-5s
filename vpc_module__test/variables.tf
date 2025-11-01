@@ -16,3 +16,7 @@ variable "vpc_tag" {
         Super = "Mahesh"
     }
 }
+
+variable "igw_tag" {
+    default = "IGW"
+}
