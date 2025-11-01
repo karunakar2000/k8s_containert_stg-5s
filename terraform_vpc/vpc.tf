@@ -41,16 +41,16 @@ resource "aws_subnet" "public" {
 }
 
 resource "aws_subnet" "private" {
-  count = length(var.public_subnet_cidrs)
+  count = length(var.private_subnet_cidrs)
   vpc_id     = aws_vpc.main.id
-  cidr_block = var.public_subnet_cidrs[count.index] 
+  cidr_block = var.private_subnet_cidrs[count.index] 
   availability_zone = local.az_names[count.index]
 
   tags = merge(
-    var.public_subnet_tags,
+    var.private_subnet_tags,
     var.vpc_tags,
     {
-      Name = "${local.common_name_suffix}-public-sub-${local.az_names[count.index]}" # project_name-dev-public-us-east-1a
+      Name = "${local.common_name_suffix}-private-sub-${local.az_names[count.index]}" # project_name-dev-private-us-east-1a
     }
   )
 }
