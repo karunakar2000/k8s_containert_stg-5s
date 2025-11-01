@@ -24,5 +24,9 @@ variable "public_subnet_cidrs" {
 variable "private_subnet_cidrs" {
     type = list
     default = ["172.18.5.0/24", "172.18.6.0/24"]
+}
 
+variable "database_subnet_cidrs" {
+    type = list
+    default = ["172.18.10.0/24", "172.18.11.0/24"]
 }

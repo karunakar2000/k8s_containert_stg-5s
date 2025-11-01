@@ -11,6 +11,9 @@ module "vpc" {
 
     # Private Subnets 
     private_subnet_cidrs = var.private_subnet_cidrs
+
+    # Database Subnets 
+    database_subnet_cidrs = var.database_subnet_cidrs
 }
 
 # data "aws_availability_zones" "available" {
